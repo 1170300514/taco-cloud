@@ -5,9 +5,12 @@ import lombok.Data;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 
 @Data
 public class Order {
+    private long id;
+    private Date placedAt;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -21,6 +24,7 @@ public class Order {
     private String zip;
 
     private String ccNumber;
+    // 使用正则表达式确保属性值所需格式
     @Pattern(regexp = "^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
              message = "Must be formatted MM/YY")
     private String ccExpiration;
